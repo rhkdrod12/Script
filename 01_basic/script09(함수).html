@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /* 선언적 함수, 익명 함수 */
+
+        // 선언적 함수
+        
+        func1();                /* 호이스팅으로 인해 함수 위치에 상관없이 함수가 작동함(선언적 함수에서만 가능) */
+        
+        function func1(){
+            console.log("func1 실행");
+        }
+
+        function func2(){
+            console.log("func2 실행");
+        }
+
+        func1();
+
+        var a = func1();  /* 함수의 실행 결과를 저장 */
+        var b = func1;    /* 함수 그 자체를 저장 */
+
+
+        console.log(b);   /* 함수 자체가 저장되어있음 */
+        b();              /* 저장된 함수를 실행 */
+
+        function func3(a){
+            console.log("func3 실행: ", a);
+        }
+
+        var c = func3;
+        c(5);
+
+        /* 익명함수 */
+        /* 변수에 함수 자체를 만들어 저장 후 , 변수를 호출해 사용하는 방식 */
+        /* 선언형 함수 방식에 비해 속도가 더 빠를거 같네 */
+        var d = function() {
+            console.log("익명 함수 실행");
+        }
+        d();
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

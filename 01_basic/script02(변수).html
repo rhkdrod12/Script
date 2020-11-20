@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 자바스크립트에서 변수타입이 지정되지 않기 때문에 딱히 지정하지 않아도
+        // 무방하지만 변수라는 의미를 알려주기위하 변수앞에 var, let을 사용해 표현함
+
+        // var : 동일한 이름의 변수를 선언할 수 있음, 하지만 안쓰는게 좋음
+        // let : ES6 문법, 동일한 이름의 변수 선언이 되지 않음
+
+
+        num1 = "10";    /* var를 굳이 붙이지 않아도 변수로 인식함 */
+        console.log(num1);
+
+        var num2 = '20' /* '', "" 둘다 문자로 인식함 */
+        var num3 = 10;
+
+        num1 = "20";
+        num2 = num1 + num2;
+
+        console.log(num1);
+        console.log(num2);
+        console.log(num3);
+
+        var num4 = 40;
+
+        var result = num1 + num2 + num3 + 100;  /* 문자 데이터가 있기때문에 모든 값들을 문자열로 치환 후 더하게 됨 */
+        console.log('result: ' + result);
+
+
+        console.log('-----------------');
+
+        // let a = 1;
+        // let a = 100;
+
+        /* 선언할 때 데이터 타입을 지정하지는 않지만 내부적으로는 데이터 타입을 가지고 있음 */
+
+
+        var i1 = 10;
+        var i2 = 20;
+        var i3 = i1+i2;
+        console.log(i3);
+
+        var s1 = "문자1";
+        var s2 = '문자2';
+        var s3 = "'안녕!'이라고 말했다";
+        console.log(s1+s2+s3);
+
+        var bool1 = true;
+        var bool2 = false;
+        
+  
+        var n1;
+        var n2 = document.querySelector("li");  /* 현재 li가 없기 때문에 null이 저장됨 */
+
+        
+        console.log(n1);    /* 공간만 할당했기 때문에 undefined */
+        console.log(n2);    /* null값이 들어있기 때문에 null */
+        
+        console.log(typeof i1);
+        console.log(typeof s1);
+        console.log(typeof bool1);
+        console.log(typeof n1);
+        console.log(typeof n2);
+
+        
+          
+
+    </script>
+
+</body>
+</html>

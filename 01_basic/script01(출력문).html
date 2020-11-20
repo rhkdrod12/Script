@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+<body>
+
+    <!-- 일반적으로 자바스크립트 문법은 아래쪽에 배치합니다. -->
+    <!-- 아래와같이 해당페이지에서만 동작해야하는 경우에 해당 페이지에 직접 넣는 방식으로 사용하게 됨 -->
+    <!-- 인라인 방식 -->
+    <script>
+        // console.log(5);                 /* 숫자의 경우 콘솔에서 파란색으로 표기 */
+        // console.log("5");               /* 문자의 경우 콘솔에서 검은색으로 표기 */
+        // console.log("hello world");     /* ; 는 넣어도 되고 안넣어도 문제없이 실행은 가능하나 넣어주는게 좋음 */
+        
+    </script>
+
+    <!-- 자바스크립트는 외부파일에서 링크하여 가져올수 있음. 파일 형식은 .js형태임 -->
+    <!-- 전역적에서 자바스크립트를 사용하는 경우에는 .js와 같이 만들어서 사용하게됨 -->
+    <!-- <script type="text/javascript" src="script01.js"></script> -->
+
+    <script>
+        // 출력문
+        //1. console.log();     : 브라우저의 콘솔창에 내용 출력
+        console.log("console.log는 브라우저의 콘솔창에 출력됩니다.");
+
+        //2. document.write();  : 브라우저의 화면에 내용 출력
+        document.write("document.write는 브라우저의 화면에 출력됩니다.");
+        // document 는 브라우저의 화면에 접근가능하게 하는 객체임
+
+        //3. alert();           : 브라우저에 경고창을 띄어 내용 출력
+        alert("alert는 경고창을 띄어 내용을 출력합니다.")
+
+        //4. confirm();         : 브라우저에 확인창을 띄어 true, false를 반환받음
+        var flag1 = confirm("confirm은 확인창을 띄어 true, false를 반환받습니다."); 
+
+        console.log("확인창에서 선택한 값이 출력: " + flag1);
+
+
+    </script>
+
+</body>
+</html>

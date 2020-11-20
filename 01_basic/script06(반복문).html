@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            display: inline-block; width:100px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    
+    <script>
+
+        for (var i = 1; i < 10; i++) {
+            for (var j = 2; j < 10; j++) {
+                if (i == 1) {
+                    document.write( "<div>",j,'단 구구단</div>');
+                }else{
+                    document.write("<div>",j, ' X ', i, ' = ', i * j, '</div>');    
+                }
+            }
+            document.write('<br>');
+        }
+
+        var arr = ['q','w','e','q','e'];
+        for(var i in arr){
+            console.log(i); /* 해당 배열의 인덱스 번호를 반환한다. */
+        }
+
+        var arr2 = {'key1':'가', 'key2':'나'};
+        for(var i in arr2){
+            console.log(i); /* 딕셔너리에서는 키값을 반환 */
+        }
+        
+
+        
+
+    </script>
+
+
+</body>
+
+</html>

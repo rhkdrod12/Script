@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 기본적으로 자바스크립트는 실행 컨텍스트를 먼저 생성 후 
+        // 이 안에 vo, scope, this를 생성하게 됨
+        // vo에는 변수와 함수가 저장되는데
+        // 가장 먼저 함수 정보가 저장되고 그 다음에 변수 정보가 저장된다. 여기서 공간만 선언한거지 초기화 한건 아님
+        // 이러한 이유로 익명 함수가 호이스팅이 되지 못하고, 선언형 함수가 호이스팅이 가능한 이유임
+        // 변수도 호이스팅이 가능하다~ 근데 사실 큰 의미는 없을듯.? 변수 호이스팅은...
+        // 그 다음에 순차적으로 선언된 위치에 따라 순차적으로 변수에 값을 할당하게 됨
+        // 중간에 다른 과정이 있지만 일단 vo자체에서의 처리방식은 이렇게 됨
+
+        function method() {  /* 매개변수를 선언하는 이유는 전달해야하는 매개변수가 어떤 것이 있는지 알려주기 위해서 사용 */
+            /* 이라고 해놨지만... 사실.. 머.. 이렇게되면 에러날 확률이 매우 높겠지. */
+            console.log("method 함수가 호출됨.");
+            console.log(arguments.length);
+            console.log(arguments);
+
+            for (var i in arguments) {
+                console.log("i: ", i, "값:", arguments[i]);
+            }
+        }
+        
+        method(1, 2, 3, 4, 5, 6, "hello");    /* 매개변수가 선언되어있지 않아도 문제 없이 값의 전달이 가능함 */
+
+
+    </script>
+</body>
+
+</html>
