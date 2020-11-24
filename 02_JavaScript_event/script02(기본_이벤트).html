@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 스크립트 위치에 따라 오류가 발생할 수 있기 때문에 주의해야함 -->
+    
+    <!-- 태그에 접근하는 스크립트 코드가 엘리먼트(태그)보다 위쪽에 위치시켜야하는 경우에 사용가능 -->
+    <script>
+        window.onload = function(){
+            var bt = document.getElementById("1");
+            console.log(bt);
+            bt.onclick = function(){console.log("onload 이벤트입니다.");}
+            // 페이지가 모두 로드 되고 나서 작동하는 이벤트이기 때문에 현재 페이지 상태에서 가장 마지막에 적용
+        }
+
+    </script>
+
+    <!-- 노드(node) = 태그(tag) = 엘리먼트(element) 전부 같은 말-->
+    <button type="button" class="btn" id="1">1</button>
+    <button type="button" class="btn" id="2">2</button>
+    <button type="button" class="btn" id="3">3</button>
+    <button type="button" class="btn" id="4">4</button>
+    <button type="button" class="btn" id="5">5</button>
+
+    <script>
+        // 문서를 사용해 태그를 얻어낼 수 있음        
+        var btn1 = document.getElementById("1");    /* 아이디가 1인 태그를 얻어오는 명령어 */
+        console.log(btn1);
+        btn1.onclick = function(){console.log(this.id + "가 클릭되었습니다.");}     /* this가 사용하기에는 문제점이 생길 확률이 높음 */
+
+        // var btn2 = document.getElementsByClassName("btn");
+        // console.log(btn2);  /* 해당되는 모든 클래스를 다가지고 오네. 컬렉션으로 */
+
+        // for(var i = 0 ; i<btn2.length ; i++){
+        //     console.log(btn2[i]);
+        //     btn2[i].onclick = function(){console.log(this.id + "클릭되었습니다.");};
+        // }
+
+
+        // 기본적으로 기본 이벤트 방식을 사용하게되면 태그가 먼저 선언되어있어야만 문제 없이 작동함
+        // 자바스크립트 구조상 태그가 먼저 선언되어있어야하기 때문에 스크릡트가 태그 아래쪽에 위치시켜야만 문제 없이 작동하는데
+        // window.onload를 걸어 이를 방지 할 수 있음
+        // 화면이 전부 로드 될 경우에만 함수가 실행되기 때문에 문제 없이 실행됨
+        // onload는 하나의 페이지에서 한번만 사용가능
+    </script>
+
+
+    
+</body>
+</html>

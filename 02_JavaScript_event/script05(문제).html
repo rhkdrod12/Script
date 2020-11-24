@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function move(a) {
+            if (confirm("이동하시겠습니까?")) {
+                location.href = a.value;
+            }
+        }
+    </script>
+
+    <button type="button" onclick="move(this)" value="https://www.naver.com">네이버로이동</button>
+    <button type="button" onclick="move(this)" value="https://www.google.com">구글로이동</button>
+
+    
+
+</body>
+
+</html>

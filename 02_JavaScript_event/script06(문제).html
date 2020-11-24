@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2 id="title">단어를 선택해주세요</h2>
+
+    <select name="select" id="selector" style="width: 100px; height: 30px; font-weight: 800; font-size: 18px;">
+        <option value="none">선택</option>
+        <option value="en">hello</option>
+        <option value="ch">니하오</option>
+        <option value="ko">안녕</option>
+    </select>
+
+    <script>
+        // function change(a){
+
+        //     var title = document.getElementById("title");
+
+        //     if(a.value=="en"){
+        //         title.innerHTML="영어입니다"
+        //     }else if(a.value=="ch"){
+        //         title.innerHTML="중국어입니다."
+        //     }else if(a.value=="ko"){
+        //         title.innerHTML="한국어입니다"
+        //     }else{
+        //         title.innerHTML="단어를 선택해주세요"
+        //     }
+
+        // }
+
+        var selector = document.getElementById("selector");
+        selector.onchange = function () {
+            
+            var title = document.getElementById("title");
+
+            if (selector.value == "en") {
+                title.innerHTML = "영어입니다"
+            } else if (selector.value == "ch") {
+                title.innerHTML = "중국어입니다."
+            } else if (selector.value == "ko") {
+                title.innerHTML = "한국어입니다"
+            } else {
+                title.innerHTML = "단어를 선택해주세요"
+            }
+        }
+    </script>
+</body>
+
+</html>

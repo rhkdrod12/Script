@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 1. checkbox 버튼을 클릭했을 때 '해당 조항에 동의했습니다. 문구를 띄우고 value값 확인 -->
+    <div id="aaa">
+        <label><input type="checkbox" name="chk1" value="조항1" onclick="check(this)">조항1</label>
+        <label><input type="checkbox" name="chk2" value="조항2" onclick="check(this)">조항2</label>
+        <label><input type="checkbox" name="chk3" value="조항3" onclick="check(this)">조항3</label>
+        <label><input type="checkbox" name="chk4" value="조항4" onclick="check(this)">조항4</label>
+    </div>
+
+    <!-- 2. 기억하기 버튼을 클릭했을 때 input태그의 공백여부, 체크박스 여부를 확인 -->
+
+    <div>ID:<input type="text" name="id" id="id_input"> 기억하기 <input type="checkbox" name="remember" id="remember_chk"
+            onclick="textCheck(this)"><button type="button" id="btn">버튼</button></div>
+    
+    <script>
+    
+
+        function check(a) {
+            if (a.checked) {
+                alert(a.value + "에 동의하셨습니다.");
+            } else {
+                alert(a.value + "에 대한 동의를 취소하셨습니다.")
+            }
+        }
+
+        function textCheck(a) {
+            if (a.checked) {
+                var id_tag = document.getElementById("id_input");
+                if (id_tag.value != '' && id_tag.value != null && id_tag.value != undefined) {
+                    alert("기억했습니다~");
+                } else {
+                    alert("값이 비어있거나 잘못된 입력입니다.");
+                    a.checked = false;
+                }
+            }
+        }
+
+        var btn = document.getElementById("btn");
+
+        btn.onclick = function(){
+            
+        };
+
+        
+
+    </script>
+</body>
+
+</html>

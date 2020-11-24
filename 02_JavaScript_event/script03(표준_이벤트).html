@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onload = function(){
+            /* var bt = document.getElementById("1");
+            console.log(bt);
+
+            bt.addEventListener('click', view); /* 이벤트 함수를 이용해 사용하는 방식 */
+            /* addEventListener("on 없는 이벤트 종류", 실행할 함수) 형태로 사용됨 */
+
+            /* function view(){
+                console.log("클릭됨");
+            } */ 
+            
+            var bt2 = document.getElementById("1");
+
+            // 클릭 이벤트 지정
+            bt2.addEventListener("click", test1);
+
+            // 클릭 이벤트가 추가됨, 덮어쓰여지는 상황이 아님, 추가되는 형태
+            // 인라인_이벤트, 기본_이벤트는 하나의 이벤트에 하나의 동작만 적용가능함
+            // 표준_이벤트는 하나의 이벤트에 여러 동작을 적용할 수 있음
+
+            bt2.addEventListener("click", test2);
+
+            // 필요에 따라 이벤트를 추가하고 뺄 수 있음
+            
+        }
+
+        function test1(){
+            console.log("1번 이벤트");
+        }   
+        function test2(){
+            console.log("2번 이벤트");
+        }
+
+    </script>
+
+    <!-- 노드(node) = 태그(tag) = 엘리먼트(element) 전부 같은 말-->
+    <button type="button" class="btn" id="1">표준 이벤트</button>
+
+    
+</body>
+</html>

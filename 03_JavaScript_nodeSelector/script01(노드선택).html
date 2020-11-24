@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+        DOM : Document Object Model
+            문서 객체, 문서들의 값을 얻어오거나 변경할 때 사용
+        BOM : Browser Object Model
+            브라우저에 대한 기능들을 가지고 있는 객체들을 의미
+            브라우저 기능을 사용할 수 있음
+     -->
+
+    <script>
+        window.onload = function () {
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function () {
+                var arr = document.getElementsByName("inter");
+                for (var i = 0; i < arr.length; i++) {
+                    console.log(arr[i]);
+                    console.log(arr[i].value);
+                    console.log(arr[i].checked);
+                }
+            }
+
+            var vtn2 = document.getElementById("btn2");
+            btn2.onclick = function(){
+                var arr = document.getElementsByClassName("apple");
+                for (var i = 0; i < arr.length; i++) {
+                    console.log(arr[i]);
+                    console.log(arr[i].value);
+                    console.log(arr[i].checked); 
+                }
+            }
+
+            var vtn3 = document.getElementById("btn3");
+            btn3.onclick = function(){
+                
+                var select1 = document.getElementById("select1");
+                console.log(select1);
+
+                var select1Option = select1.getElementsByTagName("option");
+                console.log(select1Option);
+
+                for(var i = 0 ; i < select1Option.length ; i++){
+                    console.log(select1Option[i]);
+                }
+
+            }
+        }
+
+    </script>
+
+    <!-- select 태그 기능들 -->
+
+    <!-- getElementById() -->
+       
+
+    <!-- getElementsByName() -->
+    <div>
+        <button type="button" id="btn1">체크박스 요소들 확인</button>
+        <label><input type="checkbox" name="inter" value="1">JAVA</label>
+        <label><input type="checkbox" name="inter" value="2">JSP</label>
+        <label><input type="checkbox" name="inter" value="3">JSX</label>
+        <label><input type="checkbox" name="inter" value="4">SPRING</label>
+        <label><input type="checkbox" name="inter" value="5">DB</label>
+        <label><input type="checkbox" name="inter" value="6">JS</label>
+    </div>
+
+    <!-- getElementsByClassName() -->
+    <div>
+        <button type="button" id="btn2">라디오버튼 확인</button>
+        <label><input type="radio" name="major" class="apple" value="1">프로그램</label>
+        <label><input type="radio" name="major" class="apple" value="2">디자인</label>
+        <label><input type="radio" name="major" class="apple" value="3">시스템</label>
+        <label><input type="radio" name="major" class="apple" value="4">네트워크</label>
+    </div>
+
+    <!-- getElementsByTagName() -->
+    <!-- getElementsByTagName("input")을 하게 되면 위에 있는 모든 inputTage를 가져옴 -->
+    <div>
+        <button type="button" id="btn3">선택버튼 확인</button>
+        <select name="" id="select1">
+            <option value="010">010</option>
+            <option value="02">02</option>
+            <option value="031">031</option>
+            <option value="051">051</option>
+            <option value="052">052</option>
+        </select>
+    </div>
+
+
+</body>
+
+</html>
