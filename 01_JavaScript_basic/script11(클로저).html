@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 함수 안에서 선언된 var변수는 해당 함수 내에서만 적용된다.
+
+        // function func1(){
+        //     var a = "함수 안에서 선언된 지역변수";   /* 함수를 벗어나는 순간 없어진다. */
+        // }
+
+
+        function func1() {
+            var a = "함수 안에서 선언된 지역변수";
+
+            var result = function () {
+                return a;
+            }
+            return result;
+        }
+
+        var result = func1();
+
+        console.log(result());
+
+        //클로저        - func1안의 내부함수가 fucn1의 지역변수를 접근할 수 있는 키를 가지고 있을 때
+        //클로저 상황   - 내부함수가 외부함수에 지역변수값을 바꾸는 상황
+
+        // 함수가 실행되고 나서 변화한 그 때의 변화값을 가지고 있는 지역변수에 대해 접근하기 위한 내부함수
+
+        // setTimeout에 의해 0.1초 대기하는 동안 for문이 다 돌아버리기 때문에 i = 10일 때 console.log가 실행된다,
+        // 따라서 10이 10번 출력되게 된다.
+        var i;
+        for (i = 0; i < 10; i++) {
+            setTimeout(function () {
+                console.log(i);
+            }, 100);
+        }
+
+        // setTimeout을 가지고 있는 함수를 10번 실행시키는 형태이기 때문에
+        // 해당 정보를 저장하고 있어 0~9까지로 정상 출력된다.
+        var i;
+        for (i = 0; i < 10; i++) {
+            (function (j) {
+                setTimeout(function () {
+                    console.log(j);
+                }, 100);
+            })(i);
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

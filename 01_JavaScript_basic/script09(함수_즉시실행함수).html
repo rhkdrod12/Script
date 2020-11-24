@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+
+    <script>
+
+
+        function func1(){
+            alert("1번 함수");
+        }
+        function func2(){
+            alert("2번 함수");
+        }
+
+        /* 일반적으로 즉시실행 함수는 페이지 마지막에, 순서대로 함수를 실행하기 위해서 사용될 수도 있음 */
+        /* 그것보다 한번만 한정적으로 사용되는 함수일 경우에 사용되지 않을까 싶은데.. */
+        /* 컨텍스트  */
+
+        (function(x, y){ /* 매개변수를 선언도 가능한데.. 의미가 있나???*/
+            console.log("함수 즉시 실행");
+            // func1();
+            // func2();
+            // confirm("안녕하세요~?");
+        })(1, 2);       /* 여기에 매개변수 값을 넣을 수 있음 */
+
+
+
+    </script>
+    
+
+
+
+</body>
+</html>

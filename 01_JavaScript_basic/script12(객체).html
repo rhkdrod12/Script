@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        var Person = { name: "홍길동", age: 20, arr: [1, 2, 3] };
+
+        console.log(Person);
+        // 자바스크립트도 상속 개념이 있음
+        // proto는 상속받아 내려온 사용가능한 함수들을 의미
+
+        console.log(Person.name);       /* 난 이 방식이 훨씬 더 편할거 같은데... */
+        console.log(Person["name"]);    /* 일반적으로 이 방식을 많이 사용함 */
+
+        // 키와 값 형태로 객체를 만들 수 있음
+        var exam = { math: 80, eng: 70, kor: 90 };
+
+        // 객체 안에 객체의 저장이 가능
+        var student = { exam: exam, name: "홍길동" };
+        console.log(student.exam);
+        console.log(student.exam.math);
+
+        // 배열 안에 객체 저장이 가능
+        var arr = [exam, exam, exam];
+        console.log(arr);
+        console.log(arr[0]);
+
+        // 객체에 배열도 저장 가능
+        var arrObj = { arr: [1, 2, 3, 4, 5], name: "홍길동" };
+        console.log(arrObj);
+        console.log(arrObj.arr);
+
+        console.log("---------------------------------------------");
+
+        var arr2 = [{ id: 1, name: "홍길동" }, { id: 2, name: "고길동" }];
+
+
+        var arr3 = [new person(1, "홍길동"), new person(2, "고길동")];
+
+        function person(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+
+
+        console.log(arr2[0].id);
+        console.log(arr2[0].name);
+
+        console.log(arr3[0].id);
+        console.log(arr3[0].name);
+
+        console.log("---------------------------------------------");
+
+        var arr4 = [
+            {
+                name: "홍길동",
+                age: 20,
+                subject: ["자바", "JSP", "JS"],
+                birth: 20200101
+            },
+            {
+                name: "고길동",
+                age: 30,
+                subject: ["CSS", "html"],
+                birth: 20200202
+            }
+        ];
+
+        for (var i = 0; i < arr4.length; i++) {
+            for (var j = 0; j < arr4[i].subject.length; j++) {
+                console.log(arr4[i].subject[j]);
+            }
+        }
+
+        console.log("---------------------------------------------");
+
+        var people = {
+            name : "홍길동",
+            age : 20,
+            info : function () {
+                console.log("이름:" + this.name + ", 나이:" + this.age);
+            }
+        }
+        
+        people.info();
+        
+        // ES6 부터는 class 문법을 지원함
+
+        class Persons{
+            name = "이름aaaa";
+            test = () => {
+                name
+            };
+        }
+
+        var sss = new Persons();
+        console.log(sss.name);
+        
+        sss.name = "바뀌나?? 바뀌네?";
+
+        console.log(sss.name);
+
+        console.log("---------------------------------------------");
+
+        
+
+
+    </script>
+
+
+
+</body>
+
+</html>

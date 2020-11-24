@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        var num1 = 100;
+        if(true){
+            var num1 = 200; /* var는 전역변수 선언이기 때문에 블록안에서 선언된 함수도 밖에서 사용할 수 있다. */
+        }
+        console.log(num1);
+
+        var num2 = 50;
+        function add(){         /* 기본적으로 JavaScript의 변수 스코프는 함수까지임, 따라서 함수 안에서 선언된 변수들이 다른 함수에서 사용되지 못함 */
+            console.log(num2);  /* 흠.. 밖에서 선언된 변수값이 사용이 안된는데?? */
+            var num2 = 500; 
+            var num2 = 1000;
+        }
+
+        add();              /*  */
+        console.log(num2);
+
+
+        // let : 자바스크립트의 var변수의 문제점을 보완하기 나온 ES6문법
+
+        // if(true){
+        //     let num3 = 100;     /* let이기 때문에 if문 안에 선언된 변수는 블록 밖에서 사용할 수 없음 */
+        // }
+        // console.log(num3);      /* 에러 발생 */
+        
+        let num3 = 50;
+        if(true){
+            
+            let num3 = 100;
+            console.log(num3);     /* 기본적으로 범위가 좁은 변수가 우선시 됨 */
+        }
+        console.log(num3);
+
+
+        let num4 = 110;
+        if(true){
+            console.log(num4);     /* 블록안에서 동일한 이름의 num4가 선언되어고 이 값이 초기화되기전에 접근되었으므로 에러 발생함 */
+            let num4 = 12;         /* 자바스크립트는 실행컨텍스트를 만든 후 함수와 변수들을 선언 후 코드에 따라 변수들에 값을 집어넣도록 되어있기 때문에  */
+            console.log(num4);     // 안에서 한번 선언된게 덮어 썼기 때문에 값이 없는 상태가 될것임, 또한 num4가 있다고만 선언된 상태이고 초기화된 상태가 아니기 때문에 에러 남
+        }
+
+
+    </script>
+    
+</body>
+</html>

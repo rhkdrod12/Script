@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var arrow = function(){
+            console.log("익명함수");
+        }
+        // ES6에서 새로 생긴 방식임
+        // 가독성을 좀 더 높일 수 있음
+        var arrow2 = ()=> console.log("화살표함수");
+
+        var arrow3 = (a,b)=>console.log(a,b);
+
+        arrow();
+        arrow2();
+        arrow3(5,3);
+
+
+        var arrow4 = ()=>"이 값이 반환될 것임";
+
+        console.log(arrow4());
+
+    </script>
+
+</body>
+</html>

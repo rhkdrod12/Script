@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        
+        var data = [
+            {
+                id:"kk123",
+                title: "java",
+                content: "good"
+            },
+            {
+                id:"aaa123",
+                title: "jsp",
+                content: "good"
+            },
+            {
+                id:"bbb123",
+                title: "script",
+                content: "good"
+            }
+        ]
+        
+        // JSON 파싱 - 데이터를 JSON으로 JSON을 데이터로 변환하는 작업
+        // JSON 키와 값 쌍으로 이루어진 표준 포멧으로 네트워크 상에서 데이터를 전달하기 위해 사용된다.
+        // 네트워크에서 주고 받는 데이터는 형식이 있는 데이터가 아니라 전부 문자열 형태임, 이러한 문자열을 다시 데이터로 복원하기 위해서는 어떠한 표준 포멧으로 만들어져야하며
+        // 이러한 표준 포멧 중 하나가 JSON임
+        
+        console.log(typeof data, data);
+
+        // stringify() -> 데이터를 JSON형태의 문자열 형태로 변환
+        var data2 = JSON.stringify(data);       
+        console.log(typeof data2, data2);
+
+         // parse() -> JSON형태의 문자열을 데이터 형태로 변환
+        var data3 = JSON.parse(data2);
+        console.log(typeof data3, data3);
+        
+        // 네트워크 상에서 데이터를 표현 형태는 다를 수 있음 -> 네트워크마다 표준 데이터 표현 방식이 다 다를 수 있으나 문자열에 대해서는 해당 네트워크에 맞게 변환 방식이 다 구현되어있음
+        // 그렇기 때문에 문자열의 데이터는 잘 전송이 되기 떄문에 문자열 형태로 전송하면 문제 없이 전송됨! -> 이러한 문자열을 다시 데이터로 치환하면 전혀 문제가 없다!
+        
+        console.log('---------------------------------------------------------------------------------');
+        var data4 = '[{"id":"kk123","title":"java","content":"good"},{"id":"aaa123","title":"jsp","content":"good"},{"id":"bbb123","title":"script","content":"good"}]';
+        var data5 = JSON.parse(data4);
+        console.log(typeof data5, data5);
+        
+
+    </script>
+    
+</body>
+</html>
