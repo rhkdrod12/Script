@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>할일 목록 만들기!!!</h2>
+
+    <form class="nameForm" action="">
+        <h3 class="nameTitle"></h3> <!-- 숨겨놓을 영역 -->
+        <input type="text" placeholder="이름을 입력하세요">
+        <button type="button">확인</button>
+    </form>
+
+    <form class="todoForm" action="">
+        <input type="text" placeholder="할일을 적으세요">
+        <button type="button">확인</button>
+    </form>
+
+    <ul class="todoList"></ul>
+
+    <script>
+        var btn1 = document.querySelector(".nameForm button");
+        btn1.onclick = function () {
+            var name = document.querySelector(".nameForm input");
+
+            document.querySelector(".nameForm .nameTitle").innerHTML = name.value + "님 안녕하세요";
+
+            name.style.display = "none";
+            btn1.style.display = "none";
+
+        }
+
+        var btn2 = document.querySelector(".todoForm button");
+        btn2.onclick = function () {
+            var todo = document.querySelector(".todoForm input");
+            var li = document.createElement("li");
+
+            var delBtn = "<button type='button' onclick='delElement(this)''>X</button>"
+            var downBtn = "<button type='button' onclick='updown(this, 1)''>↓</button>"
+            var upBtn = "<button type='button' onclick='updown(this, 2)''>↑</button>"
+
+            li.innerHTML = todo.value +delBtn + upBtn + downBtn;
+            document.querySelector(".todoList").appendChild(li);
+
+            todo.value = "";
+        }
+
+        function delElement(node) {
+            node.parentElement.remove();
+        }
+
+        function updown(node, flag) {
+
+            //행을 이동하기위해서는 tr을 가져와야하므로 부모의 부모 노드 가져오기
+            var content = node.parentElement;          
+            //flag에 따라 위로 이동, 아래로 이동
+            if (flag == 1) {
+                //현재 tr의 다음 tr을 가져옴                             
+                valChange(content.parentElement, content, content.nextElementSibling);
+                return;
+            } else if (flag == 2) {         
+                valChange(content.parentElement, content.previousElementSibling, content);
+                return;
+            }
+        }
+        function valChange(parent, val1, val2) {           
+            if (val1 != null && val2 != null) {
+                parent.insertBefore(val2, val1);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

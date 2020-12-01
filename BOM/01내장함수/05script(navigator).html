@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>네비게이터</h2>
+
+    <script>
+
+
+
+        console.log(window.navigator.appName);
+        console.dir(navigator);
+        // console.dir(navigator.geolocation.getCurrentPosition(
+        //     function (position) {
+        //         console.log(1);
+        //         console.log(position);
+        //         console.log(position.coords.latitude);      /* 위도 */
+        //         console.log(position.coords.longitude);     /* 경도 */
+        //         // latitude , longitude : 지구상의 좌표를 의미
+
+        //     },
+        //     function () {
+        //         console.log(2);
+        //     }
+        // )
+        // );
+        //callBack 함수 : 명령어가 병렬실행으로 따로 실행되어 응답을 기다리고 응답이 왔을 떄 실행되는 함수를 의미 
+
+        (function () {
+            navigator.geolocation.getCurrentPosition(success, fail);
+        })();
+
+        //성공에 대한 콜백함수
+        function success(position) {
+            console.log("위도: " + position.coords.latitude);      /* 위도 */
+            console.log("경도: " + position.coords.longitude);     /* 경도 */
+        }
+        //실패에 대한 콜백함수
+        function fail(e) {
+            alert("위치 정보를 얻는데 실패했습니다.");
+        }
+
+        
+    </script>
+
+</body>
+
+</html>

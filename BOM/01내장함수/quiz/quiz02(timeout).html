@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .main {
+            background: linear-gradient(90deg, #0c151c 1.3125rem, transparent 1%) 50%, linear-gradient(#0c151c 1.3125rem, transparent 1%) 50%, #263747;
+            background-size: 1.5rem 1.5rem;
+            padding: 6rem 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .area1 {           
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .area2 {
+            width: 100%;
+            height: 200px;
+        }
+
+        .nodisplay {
+            opacity: 0;
+        }
+        .move1 {
+            position: relative;
+            animation: bottomMove 1s linear;
+        }
+        .move2 {
+            position: relative;
+            animation: leftMove 1s linear;
+        }
+        .move3 {
+            position: relative;
+            animation: rightMove 1s linear;
+        }    
+
+        @keyframes bottomMove {
+            0% {
+                opacity: 0;
+                top: -20px;
+            }
+            100% {
+                top: 0px;
+                opacity: 1;
+            }
+        }
+        @keyframes leftMove {
+            from {
+                opacity: 0;
+                left: -20px;
+            }
+            to {
+                left: 0px;
+                opacity: 1;
+            }
+        }
+        @keyframes rightMove {
+            from {
+                opacity: 0;
+                right: -20px;
+            }
+            to {
+                right: 0px;
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <section class="main">
+
+        <div class="area1 nodisplay">
+            안녕하세요
+        </div>
+        <div class="area2">
+            <img src="../img/1.jpg" alt="" width="200" class="nodisplay">
+            <img src="../img/2.jpg" alt="" width="200" class="nodisplay">
+        </div>
+
+    </section>
+
+    <script>
+
+        var area1 = document.querySelector(".area1");
+        var area2 = document.querySelector(".area2");
+
+        function inputClass(area, className, rmClass) {
+            return function () {
+                area.classList.remove(rmClass);
+                area.classList.add(className);
+            }
+        }
+
+        setTimeout(inputClass(area1, "move1","nodisplay"), 1000);
+        setTimeout(inputClass(area2.children[0], "move2","nodisplay"), 2000);
+        setTimeout(inputClass(area2.children[1], "move3","nodisplay"), 3000);
+
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <form id="form">
+        <img src="img/1.jpg" class="img" alt="이미지1" style="width: 100%; height: auto; border: 3px solid rgb(165, 165, 165); padding: 5px; box-sizing: border-box;">
+        <select class="select" name="" id="">
+            <option value="img/1.jpg">봄</option>
+            <option value="img/2.jpg">여름</option>
+            <option value="img/3.jpg">가을</option>
+            <option value="img/4.jpg">겨울</option>
+        </select>        
+
+        <span>변경할 색상</span>
+        <input type="color" class="input">
+    </form>
+
+    <script>
+
+        var form = document.getElementById("form");
+        var img = form.querySelector(".img")
+        var select = form.querySelector(".select")       
+        
+        select.onchange = function(){
+            img.src = select.value;
+        }
+
+        var color = form.querySelector(".input");
+        color.onchange = function(){          
+            // img.style.borderColor = color.value;
+            img.style.border = "3px solid " + color.value;
+            // img.style.disply = "none" 이런식으로 보였다가 보이지 않았다가 할 수 있음
+        }
+
+
+    </script>
+    
+
+
+
+</body>
+</html>

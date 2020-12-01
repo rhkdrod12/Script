@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .clock {
+            color: blanchedalmond;
+            font-size: 40px;
+            text-align: center;            
+        }
+        .bg{
+            position: fixed;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+        
+    </style>
+
+</head>
+
+<body data-img='{"1":"../img/1.jpg","2":"../img/2.jpg","3":"../img/3.jpg","4":"../img/4.jpg"}'>
+
+    <img class="bg" src="../img/1.jpg" alt="">
+
+    <div class="clock">
+        <h3>00:00:00</h3>
+    </div>
+
+    <script>
+
+        var imgUrl = JSON.parse(document.body.dataset.img);
+        var imgList = Object.keys(imgUrl);                      /* Object.keys를 사용해 키값을 가져올수 있다. */
+
+        var imgValues = Object.values(imgUrl);                  /* Object.values를 사용해 값에대한 배열을 가져올 수 있다. */
+        var idx = 0;
+
+        
+        function imgChang() {
+            document.querySelector(".bg").src = imgValues[idx++];
+            if (idx == imgList.length) idx = 0;
+        }
+
+        function timer() {
+
+            var date = new Date();
+            
+            var sec = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+            var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+            var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+
+            document.querySelector(".clock").firstElementChild.innerHTML = hour + ":" + min + ":" + sec;
+        }
+
+        timer();
+        imgChang();
+
+        setInterval(timer, 1000);
+        setInterval(imgChang, 10000);
+
+    </script>
+
+
+</body>
+
+</html>

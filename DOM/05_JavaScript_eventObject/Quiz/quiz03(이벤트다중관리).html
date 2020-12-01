@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 80%;
+            box-sizing: border-box;
+            border-spacing: 0px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th,
+        td {
+
+            border: 1px solid black;
+        }
+
+        td:nth-child(1) {
+            width: 10%;
+        }
+
+        td:nth-child(2) {
+            width: 20%;
+        }
+
+        td:nth-child(3) {
+            width: 15%;
+        }
+
+        td:nth-child(4) {
+            width: 55%;
+        }
+
+        button {
+            box-sizing: border-box;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table class="table">
+        <thead>
+            <th>번호</th>
+            <th>과정명</th>
+            <th>담당교수</th>
+            <th>관리</th>
+        </thead>
+        <tbody class="list">
+            <tr>
+                <td>1</td>
+                <td>데헷!</td>
+                <td>에헤헤세1</td>
+                <td>
+                    <button class="btn basic">왜 이러면 안되요옹!?</button>
+                    <button class="btn test">시험출제</button>
+                    <button class="btn score">시험결과</button>
+                    <button class="btn management">성적관리</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>종로응용자바</td>
+                <td>홍길동</td>
+                <td>
+                    <button class="btn basic">시험기본정보</button>
+                    <button class="btn test">시험출제</button>
+                    <button class="btn score">시험결과</button>
+                    <button class="btn management">성적관리</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var list = document.querySelector("table .list");
+
+        list.onclick = function () {
+
+            // 버튼 클릭시 실행할 작업
+            if (event.target.tagName === "BUTTON") {
+                studentMange(event);
+            }
+
+
+        }
+
+        //버튼 실행 작업
+        function studentMange(event) {
+            var classList = event.target.classList;
+
+            if (classList.contains("basic")) {
+                console.log(event.target.parentElement.previousElementSibling.textContent);
+                console.log("시험기본정보");
+            } else if (classList.contains("test")) {
+                console.log(event.target.parentElement.previousElementSibling.textContent);
+                console.log("시험출제");
+            } else if (classList.contains("score")) {
+                console.log(event.target.parentElement.previousElementSibling.textContent);
+                console.log("시험결과");
+            } else if (classList.contains("management")) {
+                console.log(event.target.parentElement.previousElementSibling.textContent);
+                console.log("성적관리");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

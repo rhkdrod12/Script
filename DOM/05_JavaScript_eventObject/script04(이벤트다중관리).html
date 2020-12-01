@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #section .list div{
+            margin: 0 auto;
+            padding: 10px 10px;
+            width: max-content;
+            text-align: center;
+            border-bottom: 1px solid rgb(187, 187, 187);
+            border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section id="section">
+        <div class="list">
+            <div>
+                <span>홍길동</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>이순신</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>홍길자</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+            <div>
+                <span>김영희</span>
+                <button type="button" class="btn sel">선택</button>
+                <button type="button" class="btn del">삭제</button>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        var section = document.getElementById("section");
+        var list = section.querySelector(".list");
+
+        /* 부모 객체에서 자식의 여러 태그에 대한 이벤트를 지정해 줄 수 있다. */
+        list.onclick = function(){
+            // console.log(event.target.className);
+            
+            if(event.target.tagName != "BUTTON") return;
+
+            if(event.target.classList.contains("sel")){
+                console.log("생성기능");   
+            }else if(event.target.classList.contains("del")){
+                console.log("삭제기능");
+            }            
+        }   
+
+    </script>
+</body>
+</html>

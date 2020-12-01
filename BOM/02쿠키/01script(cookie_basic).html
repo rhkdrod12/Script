@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 쿠기는 사실상 BOM은 아님 DOM에 속하기는 함 -->
+  
+    <div>
+        <h2>쿠키생성</h2>
+        쿠키이름<br>
+        <input type="text" id="cookieName"><br>
+        쿠키값<br>
+        <input type="text" id="cookieValue"><br> 
+        <button type="button" id="make">쿠키생성</button>
+    </div>
+    <div>
+        <input type="text" id="cookieFind"><br> 
+        <button type="button" id="gets">쿠키가져오기</button>
+    </div>
+    <script>
+        document.querySelector("#make").addEventListener("click",createCookie);
+
+
+        function createCookie(){
+            var name = document.getElementById("cookieName").value;
+            var value = document.getElementById("cookieValue").value;
+
+            console.log(name, value);
+
+            var date = new Date();
+            
+
+            date.setDate(date.getDate() + 7);            
+            console.log(date);
+
+            var cookie = "";
+            cookie += name + "=" + value + ";";
+            cookie += "expires=" + date.toUTCString();
+
+            document.cookie = cookie;            
+        }
+        
+        document.querySelector("#gets").addEventListener("click", getCookie);
+
+        function getCookie(){
+            var cookieList = document.cookie.split("; ");
+            console.log(cookieList);
+
+            for(var i = 0 ; i< cookieList.length ; i++){
+                var temp = cookieList[i].trim().split("=");
+                var key = temp[0];
+                var value = temp[1];
+
+                console.log("key=" + key, "value="+value);
+
+                key.match()
+
+                if(key.startsWith(document.querySelector("#cookieFind").value)){
+                    console.log("찾음");
+                    break;
+                }
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

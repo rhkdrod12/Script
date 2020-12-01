@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="parent">
+        <li>홍길동</li>
+        <li>이순신</li>
+        <li>홍길자</li>
+        <li>김길자</li>
+        <li>고길동</li>
+    </ul>
+
+    <div class="result"></div>
+
+    <script>
+        /* 
+            target은 무언가 동작이 발생된 위치를 의미하고, window는 이름 감지하기위해 캡쳐링을 시도하며 타겟을 발견후에는 
+            이벤트 버블링을 통해,  다시 window로 돌아가면서 이벤트 속성이 걸려있는 태그를 찾은 후 전부 다 실행함
+            그렇기 때문에 항상 target은 이벤트가 발생한 위치의 태그를 의마하게 됨        
+         */
+        var result = document.querySelector(".result");
+        var parent = document.querySelector(".parent");
+
+        parent.onclick = function(){            /* 부모객체에 이벤트를 부여하게되면 자식 태그도 해당 이벤트를 위임받음 => 이를 이벤트 위임이라고 함 */                
+            console.log(event);                 /* 이벤트를 위임받았고 해당 이벤트가 발생하면 event객체를 매개변수로 넘겨주게 되어있으므로 자식을 클릭하면 자식의 event객체를 호출하게 될 것임 */
+            console.log(event.target);          /* 부모객체만 클릭하게되면 부모정보를 호출하게되는 문제가 발생 */
+            console.log(event.currentTarget);   /* 실제로 li는 이벤트가 걸려있는 태그는 아님, ul에 걸려있음, currentTarget을 통해 실제 이벤트가 걸려있는 태그를 찾을 수 있음 */
+
+            if(event.target.tagName !== "UI"){
+                return;
+            }
+
+            result.innerHTML = event.target.innerHTML;  
+            
+        }
+
+
+    </script>
+
+
+</body>
+</html>

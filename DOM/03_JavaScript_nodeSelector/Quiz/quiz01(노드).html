@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <form action="">
+        좌석:
+        <label><input type="checkbox" name="seat" value="1">1</label>
+        <label><input type="checkbox" name="seat" value="2">2</label>
+        <label><input type="checkbox" name="seat" value="3">3</label>
+        <label><input type="checkbox" name="seat" value="4">4</label>
+        <label><input type="checkbox" name="seat" value="5">5</label>
+        <label><input type="checkbox" name="seat" value="6">6</label>
+        <label><input type="checkbox" name="seat" value="7">7</label>
+        <label><input type="checkbox" name="seat" value="8">8</label>
+
+        <br>
+        <button type="button" id="btn">예약</button>
+    </form>
+    
+    <script>
+        // 1.예약버튼을 눌렀을 떄 좌석이 최소 한개이상 체크되어 있지 않다면, 경고창을 띄어주는 코드를 작성.
+        // 2.올바르게 체크되어있다면 JSON형태로 포장해주세요
+
+        var btn = document.getElementById("btn"); 
+        btn.onclick = function(){
+
+            // var checkbox = document.getElementsByName("seat");
+            var checkbox = document.querySelectorAll("input[name='seat'");
+
+            var seat1 = [];
+            var seat2 = "[";
+            var seat3 = [];
+
+            for(var i = 0 ; i < checkbox.length ; i++){
+                if(checkbox[i].checked){
+                    seat1.push(checkbox[i].value);
+                    seat2 += ('{"'+checkbox[i].value+'":"true"},');
+                    seat3.push({seat:checkbox[i].value});
+                }
+            }
+
+            seat2.pop;
+            seat2 += "]";
+                       
+            if(seat1.length == 0){
+                alert("좌석을 선택해주세요");
+                return;
+
+            }else{                
+                var jsonData = JSON.stringify({seat: seat1});
+                var seat3 = JSON.stringify(seat3);
+                console.log(jsonData);
+                console.log(seat2);
+                console.log(seat3);
+            }
+        }
+
+    </script>
+</body>
+</html>

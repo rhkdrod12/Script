@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            height: fit-content ;
+            padding: 5px 0px;
+        }
+        td:nth-child(1) button{
+            display: inline-block;
+            height: 100%;
+            width: 50%;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>이동</th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>내용</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><button type="button" onclick="updown(this, 1)">↓</button><button type="button"
+                        onclick="updown(this, 2)">↑</button></td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>hello word1</td>
+                <td>2020-01-01</td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="updown(this, 1)">↓</button><button type="button"
+                        onclick="updown(this, 2)">↑</button></td>
+                <td>2</td>
+                <td>고길동</td>
+                <td>hello word2</td>
+                <td>2020-01-01</td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="updown(this, 1)">↓</button><button type="button"
+                        onclick="updown(this, 2)">↑</button></td>
+                <td>3</td>
+                <td>이순신</td>
+                <td>hello word3</td>
+                <td>2020-01-01</td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="updown(this, 1)">↓</button><button type="button"
+                        onclick="updown(this, 2)">↑</button></td>
+                <td>4</td>
+                <td>홍길자</td>
+                <td>hello word4</td>
+                <td>2020-01-01</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <script>
+        var li = document.createElement("li");
+
+        function updown(node, flag) {
+            //행을 이동하기위해서는 tr을 가져와야하므로 부모의 부모 노드 가져오기
+            var content = node.parentElement.parentElement;
+
+            //flag에 따라 위로 이동, 아래로 이동
+            if (flag == 1) {
+                //현재 tr의 다음 tr을 가져옴
+                var nextContent = content.nextElementSibling;
+
+                if(nextContent != null){
+                    var tbody = content.parentElement;
+                    tbody.insertBefore(nextContent, content);   /* 삽입이 아니라 이동이네.. 2번째 인자 앞으로 이동 */
+                }                
+                //elementSwap(content, nextContent);          
+                return;      
+
+            } else if (flag == 2) {
+                var prevContent = content.previousElementSibling;
+                elementSwap(content, prevContent); 
+                return;               
+            }
+        }
+
+        function elementSwap(val1, val2){
+            if(val1 != null && val2 != null){
+                var val1Data = val1.innerHTML;
+                var val2Data = val2.innerHTML;
+
+                val1.innerHTML = val2Data;
+                val2.innerHTML = val1Data; 
+
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

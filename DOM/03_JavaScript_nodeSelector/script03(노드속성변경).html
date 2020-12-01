@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="content1">
+        <select class="select1" name="" id="">
+            <option value="img/1.jpg">봄</option>
+            <option value="img/2.jpg">여름</option>
+            <option value="img/3.jpg">가을</option>
+            <option value="img/4.jpg">겨울</option>
+        </select>
+        <button type="button" class="btn1" onclick="changImg()">이미지 바꾸기</button>
+        <img src="img/1.jpg" class="img1" alt="이미지1" style="width: 100%; height: auto;">
+    </div>
+
+
+
+
+    <script>
+
+        var btn1 = document.querySelector(".btn1");
+        btn1.onclick = function () {
+
+            var selectImg = document.querySelector("#content1>.select1").value
+            var img = document.querySelector(".img1");
+
+            console.log(selectImg);
+            console.log(img);
+
+            img.src = selectImg;
+        }
+
+
+        // function changImg(){
+
+        //     var selectImg = document.querySelector("#content1>.select1").value
+        //     var img = document.querySelector(".img1");
+
+        //     console.log(selectImg);
+        //     console.log(img);
+
+        //     img.src = selectImg;
+
+        // }
+
+    </script>
+
+    <hr>
+    <div id="content2">
+        <img src="img/1.jpg" class="img2" alt="이미지1" style="width: 100%; height: auto;">
+        <select class="select2" name="" id="">
+            <option value="img/1.jpg">봄</option>
+            <option value="img/2.jpg">여름</option>
+            <option value="img/3.jpg">가을</option>
+            <option value="img/4.jpg">겨울</option>
+        </select>        
+    </div>
+
+    <script>
+        var select2 = document.querySelector(".select2");      
+        select2.onchange = function(){
+            document.querySelector("#content2>.img2").src = select2.value;
+        }
+
+
+    </script>
+</body>
+
+</html>

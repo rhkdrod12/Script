@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+
+
+    <script>
+
+        window.onload = function () {         
+
+            var add = document.getElementById("add");
+            add.onclick = function () {
+                var list = document.querySelector(".list");
+
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                // var text = document.createTextNode("하고싶은 말");
+
+                // a.appendChild(text);    /* 굳이 사용되지 않는 이유가 innerHTML 때문임 */
+                a.href = "./";
+                a.innerHTML = "이걸로 변경됩니다." + (list.childElementCount+1); /* 이걸 사용하면 됨 */
+                a.style = "text-decoration: none; color: black;"
+
+                li.appendChild(a);
+                list.appendChild(li);
+            }
+
+            var del = document.getElementById("del");
+            del.onclick = function () {
+                var list = document.querySelector(".list");
+
+                if (list.childElementCount) {
+                    
+                    console.log(list.childNodes);   /* 태그안에 공백(엔터가 있는 경우)에 text형태로 들어오기 때문에 값이 이상하게 들어올 수 있음 */
+                    console.log(list.children);     /* elements만 선택됨, 태그사이에 공백이 있어도 태그들만 선택됨 */
+                    console.log(list.firstChild);
+                    list.lastElementChild.remove();
+                    
+                }
+            }
+        }
+
+    </script>
+
+
+    <button type="button" id="add">추가</button>
+    <button type="button" id="del">삭제</button>
+    <ul class="list">
+
+    </ul>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 동일한 형태의 태그에 모두 같은 이벤트를 걸기 -->
+
+    <ul>
+        <li class="list">1</li>
+        <li class="list">2</li>
+        <li class="list">3</li>
+        <li class="list">4</li>
+        <li class="list">5</li>
+    </ul>
+
+    <div class="result"></div>
+
+    <script>
+
+
+        var list = document.querySelectorAll(".list");
+        var result = document.querySelector(".result");
+        
+        // 동일한 태그에 for문을 돌려서 이벤트를 거는 형태는 좋은 코드는 아님
+        // for(var i = 0 ; i < list.length ; i++){
+        //     list[i].onclick = function(){
+        //         console.log(i);         /* 실제로 i는 5만 뜨게 될거임, 이유는 서로 같은 i를 공유하기 때문에 그런것임 */
+        //         console.log(list[i]);   /* 이러한 현상을 막기 위해서는 현재 상황을 저장하는 클로저가 필요함 */
+        //     }
+        // }
+
+        // 이벤트 객체 : 이벤트 정보를 가지고 있는 객체
+        // event : window 아래에 있는 객체로서 이벤트에 관련된 정보를 보관하고 있음
+        // 이벤트가 발생하게 되면 해당 이벤트로 정보를 갱신하고 발생한 이벤트에 event객체를 매개변수로 넘기게 되어있음
+        // 이를 통해 해당 이벤트 내에서 어떤 이벤트인지 식별가능함
+
+        // list[0].onclick = function(a){                      /* 이벤트 발생시 인자값으로 event 객체를 넘겨주도록 되어있음, event이름으로 접근해도 되지만 매개변수를 부여해 이름을 바꿀 수 있음 */
+        //     console.log(a.target);                          /* 아래와 값은 같음 */
+        //     console.log(event.target);                      /* event.target 현재 실행되고 있는 이벤트의 대상을 의미 */
+        //     result.innerHTML = event.target.innerHTML;      /* 즉 이벤트가 실행되었을 때 이벤트가 실행되고 있는 대상체를 가져오기 때문에 this와 같은 효과를 볼 수 있음 */
+        // }
+
+        // for(var i = 0 ; i < list.length ; i++){
+        //     list[i].onclick = function(){
+        //         result.innerHTML = event.target.innerHTML;      /* onclick하면 이벤트가 발생하고 해당 이벤트의 정보가 event라는 객체에 들어가게 됨 */
+        //     }
+        // }
+
+       
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <h3>form은 document의 하위 객체 중 하나, document에서 name을 통해 접근이 가능하다.</h3>
+
+    <form action="" name="regForm">
+        아이디: <input type="text" name="id"><br>
+        비밀번호: <input type="text" name="pw"><br>
+
+        번호:
+        <select name="phone" id="">
+            <option value="">선택</option>
+            <option value="">010</option>
+        </select>
+
+        분야:
+        <input type="checkbox" name="inter" id="">java
+        <input type="checkbox" name="inter" id="">jsp
+        <input type="checkbox" name="inter" id="">jsp
+
+        <button type="button" onclick="check()">가입</button>
+
+    </form>
+
+    <script>
+        // 1.접근방법
+        // 쿼리 셀렉터를 이용해 접근
+        console.log(document.querySelector("form[name='regForm']"));
+
+        // 접근자를 이용해 접근
+        console.dir(document.regForm);
+        function check() {
+            var regForm = document.regForm;
+            
+            if (document.regForm.id.value.length < 4) {
+                alert("아이디 이상함");
+                document.regForm.id.focus();
+            }else if(document.regForm.phone.value === '선택'){
+                alert("번호를 확인해주세요")
+                document.regForm.phone.focus();
+            }else{
+                //체크박스 검사
+                var inter = document.getElementsByName("inter");
+                
+                for(var i = 0 ; i < inter.length ; i++){
+                    if(regForm.inter.checked){
+                        //~~
+                    }
+                }
+
+            }
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

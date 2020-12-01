@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- fetch API를 사용해 AJAX 구현 -->
+    
+    <button type="button" onclick="ajax()">비동기 요청</button>
+
+    <script>
+        function ajax(){
+            //fetch([경로]).then(콜백함수<- 여기에 응답을 받는 함수가 넣어지게됨)
+            //then() -> 자바스크립트 비동기 처리에 이용되는 객체
+            //
+            
+            fetch("/BOM/03AJAX/hi.txt").then(function(response){
+                console.log(response);
+                response.text().then(function(text){
+                    alert(text);
+                })
+
+            })
+        }
+
+    </script>
+
+    
+</body>
+</html>

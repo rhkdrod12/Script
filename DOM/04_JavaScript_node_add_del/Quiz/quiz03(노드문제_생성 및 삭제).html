@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>할일 목록 만들기!!!</h2>
+    
+    <form class="nameForm" action="">
+        <h3 class="nameTitle"></h3>     <!-- 숨겨놓을 영역 -->
+        <input type="text" placeholder="이름을 입력하세요">
+        <button type="button">확인</button>
+    </form>
+    
+    <form class="todoForm" action="">        
+        <input type="text" placeholder="할일을 적으세요">
+        <button type="button">확인</button>
+    </form>
+
+    <ul class="todoList"></ul>
+
+    <script>
+        var btn1 = document.querySelector(".nameForm button");
+        btn1.onclick = function(){
+            var name = document.querySelector(".nameForm input");
+
+            document.querySelector(".nameForm .nameTitle").innerHTML = name.value + "님 안녕하세요";
+            
+            name.style.display = "none";
+            btn1.style.display = "none";
+
+        }
+
+        var btn2 = document.querySelector(".todoForm button");
+        btn2.onclick = function(){
+            var todo = document.querySelector(".todoForm input");            
+            var li = document.createElement("li");            
+
+            li.innerHTML = todo.value + " <button type='button' onclick='delElement(this)''>X</button>"
+            document.querySelector(".todoList").appendChild(li);
+          
+            todo.value = "";
+        }        
+        
+        function delElement(a){            
+            a.parentElement.remove();
+        }
+        
+
+        
+    </script>
+
+</body>
+</html>

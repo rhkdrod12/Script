@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 아이디나 비밀번호가 변결 될 때, 예제 처럼 처리되도록 구현 -->
+    <div>
+        <form action="">
+            아이디:<input type="text" name="id"><br>
+            <span class="idMsg"></span><br>
+            비밀번호:<input type="password" name="pw"><br>
+            <span class="pwMsg"></span><br>
+        </form>
+    </div>
+
+    <script>
+
+        var id = document.querySelector("input[name='id']");
+        var idMsg = document.querySelector(".idMsg");
+        checkLength(id, idMsg, 4, "아이디는 4글자 이상입니다.");
+
+        var pw = document.querySelector("input[name='pw']");
+        var pwMsg = document.querySelector(".pwMsg");
+        checkLength(pw, pwMsg, 9, "비밀번호는 9글자 이상입니다.");
+
+
+        function checkLength(val1, val2, length, message) {
+            val1.addEventListener("keyup", 
+                function () {
+                    if (val1.value.length < length) {
+                        val2.innerHTML = message;
+                        val1.style.borderColor = "red";
+
+                    } else {
+                        val2.innerHTML = "";
+                        val1.style.borderColor = "green";
+                    }
+                }
+            );
+        }        
+            // val1.onkeyup = function () {
+            //     if (val1.value.length < length) {
+            //         val2.innerHTML = message;                  
+            //         val1.style.borderColor = "red";
+
+            //     } else {
+            //         val2.innerHTML = "";
+            //         val1.style.borderColor = "green";
+            //     }
+            // }
+        
+                
+    </script>
+</body>
+
+</html>

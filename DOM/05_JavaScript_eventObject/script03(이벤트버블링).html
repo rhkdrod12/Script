@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .func1 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        .func2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        .func3 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+        table {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="func1">
+        <div class="func2">
+            <div class="func3">
+                func3(자식)
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr style="width: 100%;">
+                    <th style="width: 10%;"><input type="checkbox" class="allCheck"></th>
+                    <th style="width: 10%;">번호</th>
+                    <th style="width: 15%;">이름</th>
+                    <th style="width: 30%;">내용</th>
+                    <th style="width: 20%;">날짜</th>
+                    <th style="width: 15%;">삭제</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr class="tr">
+                    <td class="td"><input type="checkbox" class="check"></td>
+                    <td>1</td>
+                    <td>홍길동</td>
+                    <td>hello word1</td>
+                    <td>2020-01-01</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td>2</td>
+                    <td>고길동</td>
+                    <td>hello word2</td>
+                    <td>2020-01-01</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+     
+        /* 
+            이벤트 실행 방식
+
+            이벤트 캡쳐링 - target - 이벤트 버블링
+
+            이벤트 캡쳐링 : 이벤트가 발생한 지점을 감시하기 위해 위에서부터 아래로 순차적으로 찾음
+
+            target : 이벤트가 발생한 지점을 의미
+
+            이벤트 버블링 : target부터 순차적으로 위로 올라가며 이벤트에 따른 행위를 모두 실행시킴
+                            -> 해당 이벤트에 해당되는 모든 부모태그의 이벤트를 전부다 실행시킴
+         */
+        // 만약 첫번재 테이블행의 첫 속성을 클릭햇으면 순차적으로 올라가면서 이벤트를 전부다 실행시키기 떄문에
+        // td 이벤트 실행 -> tr 이벤트 실행 -> tbody 이벤트 실행 -> table 이벤트를 실행시키게 됨
+        // target은 이벤트가 실행된 위치이기 때문에 target은 변하지 않음
+
+        document.querySelector(".table").onclick = test;
+        document.querySelector(".tbody").onclick = test;
+        document.querySelector(".tr").onclick = test;
+        document.querySelector(".td").onclick = test;
+
+
+        var func1 = document.querySelector(".func1");
+        var func2 = document.querySelector(".func2");
+        var func3 = document.querySelector(".func3");
+
+        // func1.onclick = test2("1");
+        // func2.onclick = test3("2");
+        // func3.onclick = test2("3");
+
+        // // 이벤트의 전파를 끊어줄 필요가 있을 때가 있음
+
+        function test2(a) {
+            var s = function(){
+                console.log(a);
+            }
+            return s;
+        }
+        function test3(a){            
+            var s = function(){
+                event.stopPropagation();    /* 이벤트의 버블링을 막음, 추천하지는 않음, 위로 올라가면서 이벤트들이 더 실행되는 것을 막음*/
+                console.log(a);             /* 흠.. 근데 자주 쓸 수 있을 거 같은데.... 괜히 위에서 실행되는걸 막기 원한다면.. */      
+            }
+            return s;
+        }
+
+        function test() {
+            console.log(event.target);
+        }
+
+        // 이벤트 캡쳐링 방식
+        // 부모객체부터 이벤트를 실행시키면서 타겟으로 내려오게 됨
+        // func1.addEventListener("click", test2(1), true);    /* 캡쳐링 단계에서 실행되기 때문에 가장 먼저 실행 */
+        // func2.addEventListener("click", test2(2), false);   /* 버블링 단계에서 실행되기 때문에 가장 나중에 실행 */
+        // func3.addEventListener("click", test2(3), true);    /* 캡쳐링 단계에서 실행되기 때문에 2번째에서 실행됨 */
+
+        // func1.addEventListener("click", test, true);        /* 타겟정보는 유지됨 */
+        // func2.addEventListener("click", test, true);
+        // func3.addEventListener("click", test, true);
+
+        // func1.addEventListener("click", test2(1), true);    /* 캡쳐링 단계에서 내려가다가 막혔기 때문에 실제 타겟의 이벤트가 실행되지 않음 */
+        // func2.addEventListener("click", test3(2), true);    /* 1, 2번만 실행되게 됨 */       
+        // func3.addEventListener("click", test2(3), true);    
+
+
+
+    </script>
+</body>
+
+</html>

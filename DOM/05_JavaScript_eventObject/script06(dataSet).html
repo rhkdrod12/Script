@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h2>엘리먼트의 dataset(필요한 데이터를 저장하는 곳)</h2>
+    
+    <!-- data-[자료명] 으로 구성되어 잇음, 자료명은 사용자 정의 -->
+    <!-- 자바스크립트 형태의 데이터도 저장할 수 있음 -->
+    <!-- data-userInfo="저장할 데이터" -->
+    <ul class="nameList">
+        <li><a href="#" data-userInfo='{"id":"1", "age":"20","name":"홍길동"}'>홍길동</a></li>   
+        <li><a href="#" data-userInfo='{"id":"2", "age":"21","name":"이순신"}'>이순신</a></li>   
+        <li><a href="#" data-userInfo='{"id":"3", "age":"22","name":"홍길자"}'>홍길자</a></li>   
+        <li><a href="#" data-userInfo='{"id":"4", "age":"23","name":"박찬호"}'>박찬호</a></li>   
+    </ul>
+
+    <script>
+        var nameList = document.querySelector(".nameList");
+        nameList.onclick = function(){
+            event.preventDefault;
+            
+           
+
+            if(event.target.tagName !== 'A') return;
+            // dataset을 이용해 태그안에 데이터를 얻어올 수 있음
+            console.dir(event.target.dataset);
+            console.log(event.target.dataset.userinfo);
+
+            var data = event.target.dataset.userinfo;
+
+            var jsonData = JSON.parse(data);
+            console.log(jsonData);
+            console.log(jsonData.id);
+        }
+
+    </script>
+
+</body>
+</html>

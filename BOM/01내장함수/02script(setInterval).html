@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Time Handler</h2>
+
+    <button type="button" class="aaa bbb stopInterval" onclick="loopEnd()">반복종료</button>
+    <script>
+
+        var count = 0 ;
+
+        // setTimeout, setInterval, clearInterval은 window객체임
+        // window.setTimeout 과 같이 접근이 가능함
+
+        // setTimeout([실행할 함수], [지연 시간])   : 지연 시간 이후에 함수를 실행
+        var handlerNumber3 =  setTimeout(test, 10000);                  /* 단위 밀리초인거 같네 */
+
+        console.log(handlerNumber3);
+        // setInterval([실행함수], [반복할 시간])   : 일정시간마다 함수를 반복실행
+        var handlerNumber = setInterval(test, 1000);      /* 1초마다 해당 함수를 실행 */
+        var handlerNumber2 = setInterval(test, 2000);
+
+        //setInterval을 선언하면 handler 번호가 부여되고 이를 반환함, 이 번호가 1번이 부여되었으면clearInteval(1)하면 해당 번호 핸들러를 종료한다.
+
+        function test(){
+            console.log(count + "실행되었습니다 " + handlerNumber + "번 핸들러 " + handlerNumber2 + "번 핸들러");
+            count++;
+
+            if(count > 50){
+                clearInterval(handlerNumber);
+                console.log("종료되었습니다.");
+            }
+        }   
+
+        var stopBtn = document.querySelector(".stopInterval");
+        stopBtn.onclick = () => {        
+            clearInterval(handlerNumber);   /* 해당번호를 임의로 입력해도 종료 됨, 현재로서는 1번밖에 사용안되기 때문에 1을 입력하면 종료됨 */
+            console.log(handlerNumber + "번 핸들러가 종료되었습니다.");
+        }
+
+
+
+        
+    </script>
+
+
+
+</body>
+</html>

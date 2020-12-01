@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>하나의 폼으로 전송요청을 변경해서 보내는 방법</h2>
+
+    <form method="post" name="fo">
+        <input type="hidden" name="num"><br>
+        <input type="text" name="title"><br>
+        <input type="button" value="수정" onclick="change(this)">
+        <input type="button" value="추가" onclick="change(this)">
+    </form>
+
+    <script>
+        console.log(document.fo);               /* form은 document의 자식이기 때문에 document에서 접근이 가능함 */
+        
+        function change(node){
+            console.log(node.value);
+            console.log(node.getAttribute("value"));    /* 어차피 .속성으로 접근이 가능해서 많이 사용되지는 않음 */
+            
+            if(node.value == "수정"){
+                document.fo.setAttribute("action", "https://www.naver.com");
+            }else{
+                document.fo.setAttribute("action", "https://www.google.com")
+            }
+            console.log(document.fo);
+        }
+
+        
+
+    </script>
+</body>
+</html>

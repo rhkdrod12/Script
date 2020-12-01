@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        .main-banner1 {
+            background: linear-gradient(90deg, #0c151c 1.3125rem, transparent 1%) 50%, linear-gradient(#0c151c 1.3125rem, transparent 1%) 50%, #263747;
+            background-size: 1.5rem 1.5rem;
+            padding: 6rem 0;
+            color: #fff;
+            text-align: center;          
+        }
+
+        img{
+            position: relative;            
+            animation: showImg 1s linear;
+        }
+
+        @keyframes showImg{
+            from{                
+                opacity: 0;                
+                top: -50px;
+            }
+            to{                
+                opacity: 1;
+                top: 0px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="main-banner1">
+        
+    </div>
+
+    <script>
+        var imgNum = 0;            
+        var handler;
+        
+        showImg();
+               
+        function insertImg(){
+            var arr = ["1.jpg","2.jpg","3.jpg","4.jpg"];            
+            
+            var img = document.createElement("img");
+            img.src = "../img/" + arr[imgNum++%arr.length];
+            img.width = 200;
+
+            document.querySelector(".main-banner1").appendChild(img);
+           
+            if(imgNum >= 100){             
+                console.log(imgNum);  
+                imgNum = 0; 
+                console.log("종료할 핸들러:" + handler);
+                clearInterval(handler);                             
+            
+                setTimeout(showImg, 2000);
+            }
+        }   
+
+        function showImg(){
+           document.querySelector(".main-banner1").innerHTML="";
+           handler = setInterval(insertImg, 50);  
+           console.log("시작핸들러: " + handler);          
+        }
+        
+
+
+    </script>
+
+</body>
+
+</html>

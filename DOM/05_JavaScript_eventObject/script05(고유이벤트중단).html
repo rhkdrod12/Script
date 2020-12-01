@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul, li{
+            list-style: none;
+            
+        }
+        li{
+            display: inline-block;
+            border: 1px solid black;
+            padding: 10px 30px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        li:hover{
+           background-color: rgb(167, 163, 163);
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>a태그, submit의 고유태그들의 이벤트 중단</h2>
+
+    <div>
+        <ul class="pageNation">
+            <li><a href="getList.board">1</a></li>
+            <li><a href="getList.board">2</a></li>
+            <li><a href="getList.board">3</a></li>
+            <li><a href="getList.board">4</a></li>
+            <li><a href="getList.board">5</a></li>
+            <li><input type="checkbox"></li>
+            <li><input type="radio"></li>
+        </ul>
+    </div>
+
+    <script>
+        var pageNation = document.querySelector(".pageNation");
+       
+        pageNation.onclick = function(){
+            event.preventDefault();     /* 태그들의 동작을 막음 */
+
+            var target = event.target;            
+            
+            if(target.tagName === 'LI') target = target.firstElementChild;
+            
+
+            if(target.tagName === "A"){               
+                var addr = target.innerHTML;
+                console.log(addr);
+            }else if(target.tagName === "INPUT"){
+                if(target.type === "checkbox"){
+                    console.log("체크박스");
+                    console.dir(target);
+                    target.checked = !target.checked;
+                }else if(target.type === "radio"){
+                    console.log("라디오박스");
+                    target.checked = !target.checked;
+                }              
+
+                target.checked
+            }
+        }       
+
+    </script>
+
+</body>
+</html>

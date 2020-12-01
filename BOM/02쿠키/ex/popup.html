@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/BOM/02쿠키/ex/popup.js"></script>
+  
+
+</head>
+<body>
+    <h3>여기는 팝업창입니다.</h3>
+
+    <div>오늘하루 이창을 열지 않기<input type="checkbox"></div>
+    
+
+    <script>
+
+        var box = document.querySelector("div>input[type='checkbox']");
+        console.log(box);
+
+        box.onclick = function(){
+            if(box.checked){
+                createCookie("mainPop", "1");
+                window.close();
+            }
+        }
+
+    </script>
+
+</body>
+</html>

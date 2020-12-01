@@ -20,13 +20,12 @@
         function calc(a) {
             var val = document.getElementById("val");
             if (a.innerHTML == "+") {
-                val.value = Number.parseInt(val.value) + 1;
+                val.value++;
             } else if (a.innerHTML == "-") {
                 if (val.value > 0) {
-                    val.value = Number.parseInt(val.value) - 1;
+                    val.value--;
                 }
             }
-
         }      
     </script>
 

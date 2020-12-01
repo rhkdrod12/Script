@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            margin: 10px auto;
+            width: 80%;
+        }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+            text-align: center;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            height: 25px;
+            padding: 5px 5px;
+        }
+
+        td:nth-child(1) button {
+            display: inline-block;
+            height: 100%;
+            width: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div><button type="button" id="del">삭제</button></div>
+
+    <div>
+        <table>
+            <thead >
+                <tr style="width: 100%;">
+                    <th style="width: 10%;"><input type="checkbox" class="allCheck" ></th>
+                    <th style="width: 10%;">번호</th>
+                    <th style="width: 15%;">이름</th>
+                    <th style="width: 30%;">내용</th>
+                    <th style="width: 20%;">날짜</th>
+                    <th style="width: 15%;">삭제</th>
+                </tr>
+            </thead>
+            <tbody class="tableContent">
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td>1</td>
+                    <td>홍길동</td>
+                    <td>hello word1</td>
+                    <td>2020-01-01</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td>2</td>
+                    <td>고길동</td>
+                    <td>hello word2</td>
+                    <td>2020-01-01</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td>3</td>
+                    <td>이순신</td>
+                    <td>hello word3</td>
+                    <td>2020-01-01</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td>4</td>
+                    <td>홍길자</td>
+                    <td>hello word4</td>
+                    <td>2020-01-01</td>
+                    <td><button type="button">삭제</button></td>
+                </tr>                
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        var parent = document.querySelector(".tableContent");
+        parent.onclick = function(){
+            console.log(event);
+            if(event.target.tagName === "BUTTON"){
+                event.target.parentElement.parentElement.remove();
+            }else if(event.target.tagName === "TD" && event.target.childElementCount && event.target.firstElementChild.type === "checkbox"){
+                event.target.firstElementChild.checked = !event.target.firstElementChild.checked;
+            }
+        }
+
+
+        var del = document.getElementById("del");
+        var list = document.querySelectorAll(".check");
+
+        del.onclick = function () {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].checked) {
+                    list[i].parentElement.parentElement.remove();
+                }
+            }
+            allBtn();
+        }
+
+        var allCheck = document.querySelector(".allCheck");
+        allCheck.onclick = function () {
+            if(allCheck.checked) {
+                for (var i = 0; i < list.length; i++) {
+                    list[i].checked = true;                               
+                }                
+            }else{
+                for (var i = 0; i < list.length; i++) {
+                    list[i].checked = false;                                         
+                }               
+            }
+        }
+        
+        //하나라도 꺼져있으면 전체선택 끄기        
+        var count = 0;
+        var tableContent = document.querySelector(".tableContent");
+        tableContent.addEventListener("change", allBtn)
+        
+        function allBtn(){
+
+            var count = 0;
+            var list = tableContent.children;
+
+            for(var i = 0 ; i<list.length ; i++){                
+                if(list[i].querySelector("td>.check").checked){
+                    count++;
+                }
+            }
+            console.log(count);
+            if(tableContent.childElementCount == count && tableContent.childElementCount > 0){
+                allCheck.checked = true;
+            }else{
+                allCheck.checked = false;
+            }
+        }
+        
+
+
+
+    </script>
+</body>
+
+</html>

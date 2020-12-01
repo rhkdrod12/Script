@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 150px;
+            height: auto;
+        }
+        .result>img{
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>이벤트 속성을 이용해 만들어보기</div>
+    <div class="list">              <!-- JS에의해 클릭되면 result클래스 태그에 값을 삽입 -->
+        <img src="../img//1.jpg" alt="">
+        <img src="../img//2.jpg" alt="">
+        <img src="../img//3.jpg" alt="">
+        <img src="../img//4.jpg" alt="">
+    </div>
+
+    <div>
+        <div>결과</div>     
+        <div class="result"></div>  <!-- JS에의해 img가 삽입될 태그 -->
+    </div>
+
+
+    <script>
+        var list = document.querySelector(".list");
+        var result = document.querySelector(".result");
+
+        // for 방식
+        // var imgs = list.children;
+        // console.log(imgs);
+        // for(var i = 0 ; i < imgs.length; i++){
+        //     imgs[i].onclick = function(){                
+        //         result.innerHTML = event.target.outerHTML;
+        //     }
+        // }
+
+        // 이벤트 위임방식, 부모테그의 이벤트를 자식태그가 이어받는 성질을 사용한 것
+        list.onclick = function(){
+            if(event.target.tagName !== "IMG") return;
+            result.innerHTML = event.target.outerHTML;
+        }
+
+
+    </script>
+
+</body>
+
+</html>

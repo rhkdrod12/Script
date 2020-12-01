@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+
+        .bgImg{
+            animation: menuShow 1s linear;
+        }
+
+        @keyframes menuShow{
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+</head>
+<body>   
+
+    <div class="slide">
+        <a href="" class="bgImg"><img src="img/img1.jpg" alt=""></a>
+    </div>
+
+    <script>
+
+        var arr = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"];
+        var index = 0;
+        var slide = document.querySelector(".slide");
+
+        function changeImg(){
+
+            // 1. 이미지 생성?
+            var img = document.createElement("img");
+            img.src = "img/" + arr[++index];
+   
+
+            var a = document.createElement("a");
+            a.href = "#";
+            a.classList.add("bgImg");
+            a.appendChild(img);
+
+            // 2. 기존 이미지 삭제?
+            slide.firstElementChild.remove();
+
+            // 3. slide 아래에 이미지 추가??
+            slide.appendChild(a);
+            
+            if(index == arr.length - 1) index = -1;
+        }
+
+        (function(){
+            setInterval(changeImg, 2000);
+        })();
+
+    </script>
+</body>
+</html>

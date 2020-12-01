@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>날짜 객체 사용하기</h2>
+
+    <script>
+        var mile = new Date(1606709861526);         /* 밀리초를 이용해 날짜 연산이 가능하다. */
+
+        console.log("과거 날짜");
+        console.log(mile);
+
+
+
+        console.log("현재 날짜");
+        var date = new Date();  /* 자바와 같음 */
+        console.log(date);
+
+        console.log(date.getTime());                /* 시간을 밀리초로 변경 -> 날짜 연산시 사용함 */
+        console.log(date.getFullYear());            /* 현재의 년수를 반환 */
+        console.log(date.getMonth() + 1);           /* 현재의 달을 반환, 한달이 빠져있는 형태로 반환됨 */
+        console.log(date.getDate());                /* 현재의 일수를 반환 */
+        console.log(date.getHours());               /* 현재의 시간을 반환 24시 형태로 */
+        console.log(date.getMinutes());             /* 현재의 분을 반환 */
+        console.log(date.getSeconds());             /* 현재의 초를 반환 */
+
+        var before = 1606709861526 - (1000*60*60);       
+        var gap = date.getTime() - before;
+        
+        var str;
+
+
+        if(gap < 1000*60*60*24){
+            if(gap < 1000*60*60){
+                str = "방금전"
+            }else{
+                str = parseInt(gap/(1000*60*60)) + "시간전"
+            }
+        }else{
+            var mile = new Date(before);
+            str = mile.getFullYear() + "년" + (mile.getMonth()+1) + "월" + mile.getDate() + "일" + mile.getHours() + "시" + mile.getMinutes() + "분";
+        }
+
+        console.log(str);
+        
+        
+
+    </script>
+
+</body>
+
+</html>
